@@ -24,8 +24,9 @@ public class GameManager : MonoBehaviour {
 
 	[Tooltip("Only need to set if canBeatLevel is set to true.")]
 	public GameObject beatLevelCanvas;
+    public Text beatLevelScoreDisplay;
 
-	public AudioSource backgroundMusic;
+    public AudioSource backgroundMusic;
 	public AudioClip gameOverSFX;
 
 	[Tooltip("Only need to set if canBeatLevel is set to true.")]
@@ -74,8 +75,11 @@ public class GameManager : MonoBehaviour {
 					// hide the player so game doesn't continue playing
 					player.SetActive(false);
 
-					// switch which GUI is showing			
-					mainCanvas.SetActive (false);
+                    // set the end level score
+                    beatLevelScoreDisplay.text = mainScoreDisplay.text;
+
+                    // switch which GUI is showing			
+                    mainCanvas.SetActive (false);
 					beatLevelCanvas.SetActive (true);
 				}
 				break;
